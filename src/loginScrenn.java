@@ -1,12 +1,10 @@
 import javax.swing.*;
 import  usuarios.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.StringReader;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -19,7 +17,7 @@ public class loginScrenn {
     private JLabel text2;
     private JLabel text3;
     private JPasswordField passwordField;
-    private List<personas> listapersonas;
+    public List<personas> listapersonas;
 
     public loginScrenn() {
         listapersonas = cargarUsuariosDesdeArchivo();
@@ -38,22 +36,15 @@ public class loginScrenn {
         });
     }
 
-    private List<personas> cargarUsuariosDesdeArchivo() {
+    public List<personas> cargarUsuariosDesdeArchivo() {
         List<personas> usuarios = new ArrayList<>();
 
         try (FileInputStream fileIn = new FileInputStream("usuarios.dat");
              ObjectInputStream obIn = new ObjectInputStream(fileIn)) {
 
-            while (true) {
-                try {
-                    personas usuario = (personas) obIn.readObject();
-                    usuarios.add(usuario);
-                } catch (IOException | ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            usuarios = (List<personas>) obIn.readObject();
 
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(LoginScreen, "Error al cargar los usuarios", "Cargar Usuarios", JOptionPane.ERROR_MESSAGE);
         }
@@ -83,3 +74,4 @@ public class loginScrenn {
         frame.setVisible(true);
     }
 }
+

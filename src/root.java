@@ -7,8 +7,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import usuarios.*;
-
-
 public class root {
     private JPanel root;
     private JTextField nombreText;
@@ -26,27 +24,30 @@ public class root {
                 String nombre = nombreText.getText();
                 String contrasena = new String(passwordField.getPassword());
 
-                personas datos_usuarios = new personas(nombre,contrasena);
+                personas datos_usuarios = new personas(nombre, contrasena);
                 listadopersonas.add(datos_usuarios);
 
                 try {
+                    loginScrenn loginScreenObj = new loginScrenn();
+                    List<personas> usuariosExistentes = loginScreenObj.cargarUsuariosDesdeArchivo();
+                    usuariosExistentes.add(datos_usuarios);
+
                     FileOutputStream fileObj = new FileOutputStream("usuarios.dat");
                     ObjectOutputStream obOut = new ObjectOutputStream(fileObj);
 
-                    obOut.writeObject(listadopersonas);
+                    obOut.writeObject(usuariosExistentes);
 
                     obOut.close();
                     fileObj.close();
 
-                    JOptionPane.showMessageDialog(root,"Datos Guardados correctamente","Guardar Datos",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(root, "Datos Guardados correctamente", "Guardar Datos", JOptionPane.INFORMATION_MESSAGE);
                     nombreText.setText("");
                     passwordField.setText("");
 
-                }  catch (IOException ex) {
+                } catch (IOException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(root,"Error al guardar los datos","cargar datos", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(root, "Error al guardar los datos", "cargar datos", JOptionPane.ERROR_MESSAGE);
                 }
-
             }
         });
     }
