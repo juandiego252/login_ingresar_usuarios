@@ -17,6 +17,7 @@ public class loginScrenn {
     private JLabel text2;
     private JLabel text3;
     private JPasswordField passwordField;
+    private JTextField textField1;
     public List<personas> listapersonas;
 
     public loginScrenn() {
@@ -24,7 +25,7 @@ public class loginScrenn {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre_usuario = usernameTextField.getText();
+                String nombre_usuario = textField1.getText();
                 String contrasena = new String(passwordField.getPassword());
                 boolean credencialesOk = verificarUsuarios(nombre_usuario, contrasena);
                 if (credencialesOk) {
@@ -32,6 +33,13 @@ public class loginScrenn {
                 } else {
                     JOptionPane.showMessageDialog(LoginScreen, "Credenciales incorrectas", "Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+        cleanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField1.setText("");
+                passwordField.setText("");
             }
         });
     }
