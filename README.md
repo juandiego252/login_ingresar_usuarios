@@ -9,7 +9,7 @@ Entregables: Repositorio de github con readme detallado.
 ## Integrantes
 - Juan Falconi
 - Juan Gualotuña
-- Heyet Tinoco
+- Heyer Tinoco
 
 En este trabajo se realizo una interfaz la cual guarda la la informomacion de 5 usuarios dento de un archivo "usuarios.dat".
 Al momento de ingresar datos equivocados la aplicacion mostrara un mensaje de error.
