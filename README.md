@@ -18,11 +18,14 @@ Al momento de ingresar datos equivocados la aplicacion mostrara un mensaje de er
     Guardar datos.
 
 ![img.png](src/Imagenes/img.png)
+
 ![img_1.png](src/Imagenes/img_1.png)
 
     Ingreso de credenciales y verificacion de errores.
 ![img_2.png](src/Imagenes/img_2.png)
+
 ![img_3.png](src/Imagenes/img_3.png)
+
 ![img_4.png](src/Imagenes/img_4.png)
 
     Limpiar datos 
